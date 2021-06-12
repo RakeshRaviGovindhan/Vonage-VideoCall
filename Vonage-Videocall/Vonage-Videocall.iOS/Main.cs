@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Vonage_Videocall.iOS
+namespace VonageVideocall.iOS
 {
     public class Application
     {

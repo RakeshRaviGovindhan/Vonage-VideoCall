@@ -128,9 +128,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Vonage-Videocall\Vonage-Videocall.csproj">
-      <Project>{9365AB49-D521-422D-B809-F3B709E8AEE1}</Project>
-      <Name>Vonage-Videocall</Name>
+    <ProjectReference Include="..\Vonage-Videocall\VonageVideocall.csproj">
+      <Project>{E9E4EE00-286E-451D-8DE6-2099675D7392}</Project>
+      <Name>VonageVideocall</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
