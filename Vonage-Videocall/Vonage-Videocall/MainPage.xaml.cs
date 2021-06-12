@@ -17,7 +17,7 @@ namespace VonageVideocall
             InitializeComponent();
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try
             {
@@ -25,12 +25,11 @@ namespace VonageVideocall
                 {
                     return;
                 }
-                Navigation.PushAsync(new ChatRoomPage());
+                await Navigation.PushModalAsync(new ChatRoomPage());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
             }
             
         }

@@ -23,7 +23,7 @@ namespace VonageVideocall.Views
         {
             CrossVonage.Current.EndSession();
             CrossVonage.Current.MessageReceived -= OnMessageReceived;
-            Navigation.PopAsync();
+            Navigation.PopModalAsync();
         }
 
         private void OnMessage(object sender, EventArgs e)
@@ -36,8 +36,7 @@ namespace VonageVideocall.Views
                 : VonagePublisherVideoType.Camera;
         }
 
-        private void OnMessageReceived(string message)
-            => DisplayAlert("Random message received", message, "OK");
+        private void OnMessageReceived(string message) => DisplayAlert("Random message received", message, "OK");
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
