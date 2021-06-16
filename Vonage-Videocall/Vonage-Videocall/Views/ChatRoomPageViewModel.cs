@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using VonageVideocall.Vonage;
 using Xamarin.Forms;
 
@@ -150,8 +147,10 @@ namespace VonageVideocall.Views
             PageNavigation.PopModalAsync();
         }
 
-        public Page Handle = new Page();
-        private void OnMessageReceived(string message) => Handle.DisplayAlert("Random message received", message, "OK");
+        //public Page Handle = new Page();
+        //private void OnMessageReceived(string message) => Handle.DisplayAlert("Random message received", message, "OK");
+        
+        private void OnMessageReceived(string message) { }
 
         #endregion
 
