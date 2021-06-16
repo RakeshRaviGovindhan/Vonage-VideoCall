@@ -1,4 +1,5 @@
 ﻿using System;
+using VonageVideocall.Views;
 using VonageVideocall.Vonage;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,6 +8,13 @@ namespace VonageVideocall
 {
     public partial class App : Application
     {
+
+        #region Page Navigation
+
+        public static IPageNavigation PageNavigation { get; set; }
+
+        #endregion
+
         public App()
         {
             InitializeComponent();

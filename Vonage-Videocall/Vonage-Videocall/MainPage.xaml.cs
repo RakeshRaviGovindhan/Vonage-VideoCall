@@ -17,7 +17,7 @@ namespace VonageVideocall
             InitializeComponent();
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void JoinCall_Clicked(object sender, EventArgs e)
         {
             try
             {

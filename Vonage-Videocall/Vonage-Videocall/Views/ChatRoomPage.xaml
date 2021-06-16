@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:Vonage="clr-namespace:VonageVideocall.Vonage"
+             xmlns:Vonage="clr-namespace:VonageVideocall.Vonage" xmlns:VM="clr-namespace:VonageVideocall.Views"
              x:Class="VonageVideocall.Views.ChatRoomPage">
 
-    <RelativeLayout x:Name="ContainerLayout" HeightRequest="{Binding ContainerHeight}" 
+    <ContentPage.BindingContext>
+        <VM:ChatRoomPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <RelativeLayout x:Name="ContainerLayout"
                         HorizontalOptions="FillAndExpand" 
                         VerticalOptions="FillAndExpand" 
                         BackgroundColor="#121111"
@@ -18,10 +22,10 @@
         <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-40}"
                          RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=22}">
 
-            <Image Source="closevideochat_red.png" WidthRequest="20"
+            <Image Source="closevideochat_red.png" WidthRequest="20" IsVisible="false"
                        HeightRequest="20" VerticalOptions="Center">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnEndCall"/>
+                    <TapGestureRecognizer Command="{Binding EndCallTappedCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
 
@@ -46,12 +50,11 @@
                 <Image Source="ic_switch_camera_call.png" WidthRequest="30"
                        HeightRequest="30" VerticalOptions="Center">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnSwitchCameraClicked"/>
+                        <TapGestureRecognizer Command="{Binding SwitchCameraTappedCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
 
             </StackLayout>
-
 
         </RelativeLayout>
 
@@ -63,30 +66,31 @@
 
             <StackLayout Orientation="Horizontal" Spacing="55" HorizontalOptions="Center" Margin="0,15,0,15" >
 
-                <Image Source="ic_cam_active_call.png" WidthRequest="50"
+                <Image Source="{Binding VideoImg}" WidthRequest="50"
                            HeightRequest="50" VerticalOptions="Center">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnLocalVideoMuteClicked"/>
+                        <TapGestureRecognizer Command="{Binding VideoMuteTappedCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="ic_mic_active_call.png" WidthRequest="50"
+                <Image Source="{Binding AudioImg}" WidthRequest="50"
                            HeightRequest="50" VerticalOptions="Center">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnLocalAudioMuteClicked"/>
+                        <TapGestureRecognizer Command="{Binding AudioMuteTappedCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
 
                 <Image Source="ic_end_call.png" WidthRequest="50"
                            HeightRequest="50" VerticalOptions="Center">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEndCall"/>
+                        <TapGestureRecognizer Command="{Binding EndCallTappedCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
 
             </StackLayout>
 
         </StackLayout>
+        
     </RelativeLayout>
     
 </ContentPage>
