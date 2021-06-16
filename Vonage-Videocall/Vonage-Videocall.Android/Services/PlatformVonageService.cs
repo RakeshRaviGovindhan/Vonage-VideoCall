@@ -361,6 +361,46 @@ namespace VonageVideocall.Droid.Services
             PublisherKit = null;
         }
 
+        public override void MuteAudio()
+        {
+            if (PublisherKit == null)
+            {
+                return;
+            }
+
+            PublisherKit.PublishAudio = false;
+        }
+
+        public override void MuteVideo()
+        {
+            if (PublisherKit == null)
+            {
+                return;
+            }
+
+            PublisherKit.PublishVideo = false;
+        }
+
+        public override void UnMuteAudio()
+        {
+            if (PublisherKit == null)
+            {
+                return;
+            }
+
+            PublisherKit.PublishAudio = true;
+        }
+
+        public override void UnMuteVideo()
+        {
+            if (PublisherKit == null)
+            {
+                return;
+            }
+
+            PublisherKit.PublishVideo = true;
+        }
+
         private void SetVideoScaleStyle(PublisherKit publisherKit)
             => publisherKit.SetStyle(BaseVideoRenderer.StyleVideoScale, MapVideoScaleStyle(PublisherVideoScaleStyle));
 

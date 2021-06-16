@@ -112,6 +112,14 @@ namespace VonageVideocall.Vonage
 
         public abstract void CycleCamera();
 
+        public abstract void MuteAudio();
+
+        public abstract void UnMuteAudio();
+
+        public abstract void MuteVideo();
+
+        public abstract void UnMuteVideo();
+
         protected void RaiseError(string message) => Error?.Invoke(message);
 
         protected void RaiseMessageReceived(string message)

@@ -50,6 +50,14 @@ namespace VonageVideocall.Vonage
         void EndSession();
 
         void CycleCamera();
+
+        void MuteAudio();
+
+        void MuteVideo();
+
+        void UnMuteAudio();
+
+        void UnMuteVideo();
     }
 
 }
