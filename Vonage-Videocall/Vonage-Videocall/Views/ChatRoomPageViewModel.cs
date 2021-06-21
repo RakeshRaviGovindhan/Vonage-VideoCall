@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using VonageVideocall.Vonage;
 using Xamarin.Forms;
 
@@ -11,6 +12,21 @@ namespace VonageVideocall.Views
         #region  Properties
 
         public IPageNavigation PageNavigation => App.PageNavigation;
+
+        private bool isCallMuted { get; set; }
+        public bool IsCallMuted
+        {
+            get => isCallMuted;
+            set
+            {
+                if (value == isCallMuted)
+                    return;
+
+                isCallMuted = value;
+                OnPropertyChanged();
+            }
+        }
+
         private bool isAudioMuted { get; set; }
         public bool IsAudioMuted
         {
@@ -96,12 +112,14 @@ namespace VonageVideocall.Views
             {
                 VideoImg = "ic_cam_active_call.png";
                 IsVideoMuted = false;
+                CheckCallMuted();
                 CrossVonage.Current.UnMuteVideo();
             }
             else
             {
                 VideoImg = "ic_cam_disabled_call.png";
-                IsVideoMuted = true;
+                IsVideoMuted = true; 
+                CheckCallMuted();
                 CrossVonage.Current.MuteVideo();
             }
         }
@@ -121,20 +139,39 @@ namespace VonageVideocall.Views
             {
                 AudioImg = "ic_mic_active_call.png";
                 IsAudioMuted = false;
+                CheckCallMuted();
                 CrossVonage.Current.UnMuteAudio();
             }
             else
             {
-                VideoImg = "ic_mic_inactive_call.png";
+                AudioImg = "ic_mic_inactive_call.png";
                 IsAudioMuted = true;
+                CheckCallMuted();
                 CrossVonage.Current.MuteAudio();
             }
         }
 
         #endregion
 
+        #region CheckCallMuted
+
+        private void CheckCallMuted()
+        {
+            if (!IsAudioMuted && !IsVideoMuted)
+            {
+                IsCallMuted = false;
+            }
+            else
+            {
+                IsCallMuted = true;
+            }
+
+        }
+
+        #endregion
+
         #region EndCall
-        
+
         public ICommand EndCallTappedCommand
         {
             get;
@@ -142,8 +179,17 @@ namespace VonageVideocall.Views
         }
         private void EndCallTapped(object obj)
         {
-            CrossVonage.Current.EndSession();
-            CrossVonage.Current.MessageReceived -= OnMessageReceived;
+            try
+            {
+                CrossVonage.Current.EndSession();
+                CrossVonage.Current.MessageReceived -= OnMessageReceived;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
             PageNavigation.PopModalAsync();
         }
 
