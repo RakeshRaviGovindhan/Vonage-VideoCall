@@ -361,74 +361,11 @@ namespace VonageVideocall.Droid.Services
             PublisherKit = null;
         }
 
-        public override void MuteAudio()
-        {
-            if (PublisherKit == null)
-            {
-                return;
-            }
+        public override void MuteAudio() => IsAudioPublishingEnabled = false;
+        public override void UnMuteAudio() => IsAudioPublishingEnabled = true;
 
-            IsAudioPublishingEnabled = false;
-            //using(PublisherKit)
-            //{
-            //    PublisherKit.PublishAudio = IsVideoPublishingDisabled;
-            //    SetVideoScaleStyle(PublisherKit);
-            //    Session.Publish(PublisherKit);
-            //    RaisePublisherUpdated();
-            //}
-
-        }
-
-        public override void MuteVideo()
-        {
-            if (PublisherKit == null)
-            {
-                return;
-            }
-
-            IsVideoPublishingEnabled = false;
-            //using (PublisherKit)
-            //{
-            //    PublisherKit.PublishVideo = IsVideoPublishingDisabled;
-            //    SetVideoScaleStyle(PublisherKit);
-            //    Session.Publish(PublisherKit);
-            //    RaisePublisherUpdated();
-            //}
-        }
-
-        public override void UnMuteAudio()
-        {
-            if (PublisherKit == null)
-            {
-                return;
-            }
-
-            IsAudioPublishingEnabled = true;
-            //using (PublisherKit)
-            //{
-            //    PublisherKit.PublishAudio = IsVideoPublishingEnabled;
-            //    SetVideoScaleStyle(PublisherKit);
-            //    Session.Publish(PublisherKit);
-            //    RaisePublisherUpdated();
-            //}
-        }
-
-        public override void UnMuteVideo()
-        {
-            if (PublisherKit == null)
-            {
-                return;
-            }
-
-            IsVideoPublishingEnabled = true;
-            //using (PublisherKit)
-            //{
-            //    PublisherKit.PublishVideo = IsVideoPublishingEnabled;
-            //    SetVideoScaleStyle(PublisherKit);
-            //    Session.Publish(PublisherKit);
-            //    RaisePublisherUpdated();
-            //}
-        }
+        public override void MuteVideo() => IsVideoPublishingEnabled = false;
+        public override void UnMuteVideo() => IsVideoPublishingEnabled = true;
 
         private void SetVideoScaleStyle(PublisherKit publisherKit)
             => publisherKit.SetStyle(BaseVideoRenderer.StyleVideoScale, MapVideoScaleStyle(PublisherVideoScaleStyle));
