@@ -54,9 +54,21 @@ namespace VonageVideocall.Vonage
             set => SetValue(value);
         }
 
+        public bool IsVideoPublishingDisabled
+        {
+            get => GetValue(false);
+            set => SetValue(value);
+        }
+
         public bool IsAudioPublishingEnabled
         {
             get => GetValue(true);
+            set => SetValue(value);
+        }
+
+        public bool IsAudioPublishingDisabled
+        {
+            get => GetValue(false);
             set => SetValue(value);
         }
 

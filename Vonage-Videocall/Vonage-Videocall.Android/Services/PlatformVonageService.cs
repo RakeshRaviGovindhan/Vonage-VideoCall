@@ -352,7 +352,7 @@ namespace VonageVideocall.Droid.Services
             }
 
             using (PublisherKit)
-            {
+            {                 
                 PublisherKit.PublishAudio = false;
                 PublisherKit.PublishVideo = false;
                 PublisherKit.StreamCreated -= OnPublisherStreamCreated;
@@ -368,7 +368,15 @@ namespace VonageVideocall.Droid.Services
                 return;
             }
 
-            PublisherKit.PublishAudio = false;
+            IsAudioPublishingEnabled = false;
+            //using(PublisherKit)
+            //{
+            //    PublisherKit.PublishAudio = IsVideoPublishingDisabled;
+            //    SetVideoScaleStyle(PublisherKit);
+            //    Session.Publish(PublisherKit);
+            //    RaisePublisherUpdated();
+            //}
+
         }
 
         public override void MuteVideo()
@@ -378,7 +386,14 @@ namespace VonageVideocall.Droid.Services
                 return;
             }
 
-            PublisherKit.PublishVideo = false;
+            IsVideoPublishingEnabled = false;
+            //using (PublisherKit)
+            //{
+            //    PublisherKit.PublishVideo = IsVideoPublishingDisabled;
+            //    SetVideoScaleStyle(PublisherKit);
+            //    Session.Publish(PublisherKit);
+            //    RaisePublisherUpdated();
+            //}
         }
 
         public override void UnMuteAudio()
@@ -388,7 +403,14 @@ namespace VonageVideocall.Droid.Services
                 return;
             }
 
-            PublisherKit.PublishAudio = true;
+            IsAudioPublishingEnabled = true;
+            //using (PublisherKit)
+            //{
+            //    PublisherKit.PublishAudio = IsVideoPublishingEnabled;
+            //    SetVideoScaleStyle(PublisherKit);
+            //    Session.Publish(PublisherKit);
+            //    RaisePublisherUpdated();
+            //}
         }
 
         public override void UnMuteVideo()
@@ -398,7 +420,14 @@ namespace VonageVideocall.Droid.Services
                 return;
             }
 
-            PublisherKit.PublishVideo = true;
+            IsVideoPublishingEnabled = true;
+            //using (PublisherKit)
+            //{
+            //    PublisherKit.PublishVideo = IsVideoPublishingEnabled;
+            //    SetVideoScaleStyle(PublisherKit);
+            //    Session.Publish(PublisherKit);
+            //    RaisePublisherUpdated();
+            //}
         }
 
         private void SetVideoScaleStyle(PublisherKit publisherKit)

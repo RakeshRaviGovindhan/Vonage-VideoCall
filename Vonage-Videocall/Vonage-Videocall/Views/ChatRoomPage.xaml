@@ -40,7 +40,7 @@
                     <Vonage:VonagePublisherView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
-            <Image Source="ic_mic_muted_call.png" WidthRequest="30"
+            <Image Source="ic_mic_muted_call.png" WidthRequest="30" IsVisible="{Binding IsCallMuted}"
                            HeightRequest="30" Margin="6">
             </Image>
 
