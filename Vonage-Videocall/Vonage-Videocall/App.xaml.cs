@@ -26,8 +26,8 @@ namespace VonageVideocall
         {
             PageNavigation = new PageNavigation();
             CrossVonage.Current.ApiKey = "47245794";
-            CrossVonage.Current.UserToken = "T1==cGFydG5lcl9pZD00NzI0NTc5NCZzaWc9MzgyMGU0ZDJiNDMwNzJiNTZmMTczMWQzYzVlNjMyOGY2MGMwNDQzNzpzZXNzaW9uX2lkPTFfTVg0ME56STBOVGM1Tkg1LU1UWXlNelV5TWpFME1URTNNSDV3Y2psU09VeGphWFpUTDBkUmRuTkdlV1l3Y0RGM2JWRi1mZyZjcmVhdGVfdGltZT0xNjIzNTIyMTkxJm5vbmNlPTAuNDk2ODk1MzcwMDg0NzE2MyZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjI2MTE0MTg5JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
-            CrossVonage.Current.SessionId = "1_MX40NzI0NTc5NH5-MTYyMzUyMjE0MTE3MH5wcjlSOUxjaXZTL0dRdnNGeWYwcDF3bVF-fg";
+            CrossVonage.Current.UserToken = "T1==cGFydG5lcl9pZD00NzI0NTc5NCZzaWc9NDhhODM5NDFmZDlkMDY5MTE0YTFjNzk0NmY1OTlmOWVhYTEzZWIxNjpzZXNzaW9uX2lkPTJfTVg0ME56STBOVGM1Tkg1LU1UWXlORE0yTnpjM01qRXlOSDVMYmxaNmJFSkthMk5VVnpCelJ6RXpXbVpoVjNONlVXbC1mZyZjcmVhdGVfdGltZT0xNjI0MzY3ODU2Jm5vbmNlPTAuMzUwOTU5OTMwNzQ2Nzc4NTYmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTYyNjk1OTg1NSZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==";
+            CrossVonage.Current.SessionId = "2_MX40NzI0NTc5NH5-MTYyNDM2Nzc3MjEyNH5LblZ6bEJKa2NUVzBzRzEzWmZhV3N6UWl-fg";
             CrossVonage.Current.Error += (m) => MainPage.DisplayAlert("ERROR", m, "OK");
         }
 
