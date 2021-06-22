@@ -109,7 +109,7 @@ namespace VonageVideocall.Views
         {
             try
             {
-                if(!IsLoading)
+                if (!IsLoading)
                 {
                     IsLoading = true;
                     CrossVonage.Current.CycleCamera();
@@ -240,7 +240,7 @@ namespace VonageVideocall.Views
             finally
             {
                 PageNavigation.PopModalAsync();
-            }  
+            }
         }
 
         #endregion

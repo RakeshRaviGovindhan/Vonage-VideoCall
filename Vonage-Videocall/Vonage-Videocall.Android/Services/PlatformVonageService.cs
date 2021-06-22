@@ -1,14 +1,14 @@
-﻿using Android.Runtime;
-using System;
-using System.ComponentModel;
-using System.Linq;
-using Android;
+﻿using Android;
 using Android.Content.PM;
+using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Com.Opentok.Android;
-using System.Collections.ObjectModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using VonageVideocall.Vonage;
 
 namespace VonageVideocall.Droid.Services
@@ -352,7 +352,7 @@ namespace VonageVideocall.Droid.Services
             }
 
             using (PublisherKit)
-            {                 
+            {
                 PublisherKit.PublishAudio = false;
                 PublisherKit.PublishVideo = false;
                 PublisherKit.StreamCreated -= OnPublisherStreamCreated;
