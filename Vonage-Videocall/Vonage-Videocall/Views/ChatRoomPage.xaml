@@ -31,33 +31,37 @@
 
         </StackLayout>
 
-        <RelativeLayout IsVisible="true" WidthRequest="90" HeightRequest="110" Margin="15,26,0,0" BackgroundColor="LightGray"
-                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-118}"
-                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-226}"
+        <Frame CornerRadius="6" WidthRequest="90" HeightRequest="110" Margin="15,26,0,0" Padding="0"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-118}"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-226}">
+
+            <RelativeLayout IsVisible="true"  BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                             BindableLayout.ItemsSource="{Binding Path=StreamIdCollection, Source={x:Static Vonage:CrossVonage.Current}}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <Vonage:VonagePublisherView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-            <Image Source="ic_mic_muted_call.png" WidthRequest="30" IsVisible="{Binding IsCallMuted}"
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Vonage:VonagePublisherView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+                <Image Source="ic_mic_muted_call.png" WidthRequest="30" IsVisible="{Binding IsCallMuted}"
                            HeightRequest="30" Margin="6">
-            </Image>
-
-            <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-34}"
-                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-32}">
-
-                <Image Source="ic_switch_camera_call.png" WidthRequest="30"
-                       HeightRequest="30" VerticalOptions="Center">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SwitchCameraTappedCommand}"/>
-                    </Image.GestureRecognizers>
                 </Image>
 
-            </StackLayout>
+                <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-34}"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-32}">
 
-        </RelativeLayout>
+                    <Image Source="ic_switch_camera_call.png" WidthRequest="30"
+                       HeightRequest="30" VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SwitchCameraTappedCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
 
+                </StackLayout>
+
+            </RelativeLayout>
+
+        </Frame>
+        
         <StackLayout x:Name="RelativeFooter" 
                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Constant=0}"
                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Constant=-80}"

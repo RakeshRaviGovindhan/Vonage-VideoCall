@@ -8,10 +8,23 @@ namespace VonageVideocall.Views
     public class ChatRoomPageViewModel : BindableObject
     {
 
-
         #region  Properties
 
         public IPageNavigation PageNavigation => App.PageNavigation;
+
+        private bool isLoading { get; set; }
+        public bool IsLoading
+        {
+            get => isLoading;
+            set
+            {
+                if (value == isLoading)
+                    return;
+
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
 
         private bool isCallMuted { get; set; }
         public bool IsCallMuted
@@ -94,7 +107,19 @@ namespace VonageVideocall.Views
         }
         private void SwitchCameraTapped(object obj)
         {
-            CrossVonage.Current.CycleCamera();
+            try
+            {
+                if(!IsLoading)
+                {
+                    IsLoading = true;
+                    CrossVonage.Current.CycleCamera();
+                    IsLoading = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         #endregion
@@ -108,19 +133,31 @@ namespace VonageVideocall.Views
         }
         private void VideoMuteTapped(object obj)
         {
-            if (IsVideoMuted)
+            try
             {
-                VideoImg = "ic_cam_active_call.png";
-                IsVideoMuted = false;
-                CheckCallMuted();
-                CrossVonage.Current.UnMuteVideo();
+                if (!IsLoading)
+                {
+                    IsLoading = true;
+                    if (IsVideoMuted)
+                    {
+                        VideoImg = "ic_cam_active_call.png";
+                        IsVideoMuted = false;
+                        CheckCallMuted();
+                        CrossVonage.Current.UnMuteVideo();
+                    }
+                    else
+                    {
+                        VideoImg = "ic_cam_disabled_call.png";
+                        IsVideoMuted = true;
+                        CheckCallMuted();
+                        CrossVonage.Current.MuteVideo();
+                    }
+                    IsLoading = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                VideoImg = "ic_cam_disabled_call.png";
-                IsVideoMuted = true; 
-                CheckCallMuted();
-                CrossVonage.Current.MuteVideo();
+
             }
         }
 
@@ -135,19 +172,31 @@ namespace VonageVideocall.Views
         }
         private void AudioMuteTapped(object obj)
         {
-            if (IsAudioMuted)
+            try
             {
-                AudioImg = "ic_mic_active_call.png";
-                IsAudioMuted = false;
-                CheckCallMuted();
-                CrossVonage.Current.UnMuteAudio();
+                if (!IsLoading)
+                {
+                    IsLoading = true;
+                    if (IsAudioMuted)
+                    {
+                        AudioImg = "ic_mic_active_call.png";
+                        IsAudioMuted = false;
+                        CheckCallMuted();
+                        CrossVonage.Current.UnMuteAudio();
+                    }
+                    else
+                    {
+                        AudioImg = "ic_mic_inactive_call.png";
+                        IsAudioMuted = true;
+                        CheckCallMuted();
+                        CrossVonage.Current.MuteAudio();
+                    }
+                    IsLoading = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                AudioImg = "ic_mic_inactive_call.png";
-                IsAudioMuted = true;
-                CheckCallMuted();
-                CrossVonage.Current.MuteAudio();
+
             }
         }
 
@@ -181,22 +230,18 @@ namespace VonageVideocall.Views
         {
             try
             {
-                CrossVonage.Current.EndSession();
-                CrossVonage.Current.MessageReceived -= OnMessageReceived;
+                if (!IsLoading)
+                {
+                    IsLoading = true;
+                    CrossVonage.Current.EndSession();
+                    IsLoading = false;
+                }
             }
-            catch (Exception ex)
+            finally
             {
-
-                throw;
-            }
-            
-            PageNavigation.PopModalAsync();
+                PageNavigation.PopModalAsync();
+            }  
         }
-
-        //public Page Handle = new Page();
-        //private void OnMessageReceived(string message) => Handle.DisplayAlert("Random message received", message, "OK");
-        
-        private void OnMessageReceived(string message) { }
 
         #endregion
 
