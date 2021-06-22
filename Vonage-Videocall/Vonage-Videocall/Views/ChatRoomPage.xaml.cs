@@ -67,7 +67,7 @@ namespace VonageVideocall.Views
 
         private void OnLocalAudioMuteClicked(object sender, EventArgs e)
         {
-            if(IsAudioMuted)
+            if (IsAudioMuted)
             {
                 VideoImg = "ic_mic_active_call.png";
                 IsAudioMuted = false;
@@ -79,7 +79,7 @@ namespace VonageVideocall.Views
                 IsAudioMuted = true;
                 CrossVonage.Current.MuteAudio();
             }
-            
+
         }
 
     }

@@ -1,11 +1,11 @@
-﻿using Xamarin.Forms;
-using Android.Content;
-using AView = Android.Views.View;
+﻿using Android.Content;
 using Android.Runtime;
-using SystemIntPtr = System.IntPtr;
-using AndroidRuntimeJniHandleOwnership = Android.Runtime.JniHandleOwnership;
-using VonageVideocall.Vonage;
 using VonageVideocall.Droid.Renderers;
+using VonageVideocall.Vonage;
+using Xamarin.Forms;
+using AndroidRuntimeJniHandleOwnership = Android.Runtime.JniHandleOwnership;
+using AView = Android.Views.View;
+using SystemIntPtr = System.IntPtr;
 
 [assembly: ExportRenderer(typeof(VonagePublisherView), typeof(VonagePublisherViewRenderer))]
 namespace VonageVideocall.Droid.Renderers

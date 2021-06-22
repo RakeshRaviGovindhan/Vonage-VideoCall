@@ -1,8 +1,6 @@
-﻿using System;
-using VonageVideocall.Views;
+﻿using VonageVideocall.Views;
 using VonageVideocall.Vonage;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace VonageVideocall
 {

@@ -1,9 +1,9 @@
-﻿using Xamarin.Forms.Platform.Android;
-using Android.Content;
-using AView = Android.Views.View;
+﻿using Android.Content;
 using Android.Runtime;
 using VonageVideocall.Vonage;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using AView = Android.Views.View;
 
 namespace VonageVideocall.Droid.Renderers
 {
