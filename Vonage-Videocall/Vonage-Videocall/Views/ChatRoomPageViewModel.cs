@@ -111,14 +111,14 @@ namespace VonageVideocall.Views
             {
                 if (!IsLoading)
                 {
-                    IsLoading = true;
+                    SetAppLoading();
                     CrossVonage.Current.CycleCamera();
-                    IsLoading = false;
+                    ResetAppLoading();
                 }
             }
             catch (Exception ex)
             {
-
+                ResetAppLoading();
             }
         }
 
@@ -137,7 +137,7 @@ namespace VonageVideocall.Views
             {
                 if (!IsLoading)
                 {
-                    IsLoading = true;
+                    SetAppLoading();
                     if (IsVideoMuted)
                     {
                         VideoImg = "ic_cam_active_call.png";
@@ -152,12 +152,12 @@ namespace VonageVideocall.Views
                         CheckCallMuted();
                         CrossVonage.Current.MuteVideo();
                     }
-                    IsLoading = false;
+                    ResetAppLoading();
                 }
             }
             catch (Exception ex)
             {
-
+                ResetAppLoading();
             }
         }
 
@@ -176,7 +176,7 @@ namespace VonageVideocall.Views
             {
                 if (!IsLoading)
                 {
-                    IsLoading = true;
+                    SetAppLoading();
                     if (IsAudioMuted)
                     {
                         AudioImg = "ic_mic_active_call.png";
@@ -191,12 +191,12 @@ namespace VonageVideocall.Views
                         CheckCallMuted();
                         CrossVonage.Current.MuteAudio();
                     }
-                    IsLoading = false;
+                    ResetAppLoading();
                 }
             }
             catch (Exception ex)
             {
-
+                ResetAppLoading();
             }
         }
 
@@ -232,16 +232,25 @@ namespace VonageVideocall.Views
             {
                 if (!IsLoading)
                 {
-                    IsLoading = true;
+                    SetAppLoading();
                     CrossVonage.Current.EndSession();
-                    IsLoading = false;
+                    ResetAppLoading();
+                    PageNavigation.PopModalAsync();
                 }
             }
-            finally
+            catch(Exception ex)
             {
-                PageNavigation.PopModalAsync();
+                ResetAppLoading();
             }
         }
+
+        #endregion
+
+        #region Check app loading
+
+        public void SetAppLoading() => IsLoading = true;
+
+        public void ResetAppLoading() => IsLoading = false;
 
         #endregion
 
